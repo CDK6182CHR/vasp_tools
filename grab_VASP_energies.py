@@ -4,7 +4,16 @@ __version__ = "1.0"
 __author__ = "Dr. Huan Wang, email: huan.wang@whut.edu.cn"
 __date__ = "2019-04-11"
 
-"""
+
+from pathlib import Path, PurePath
+import argparse as ap
+import csv, re, sys, time
+
+
+parser = ap.ArgumentParser(
+            add_help=True,
+            formatter_class=ap.RawDescriptionHelpFormatter,
+            description="""
     This is a Python3 script for grabbing the energies in the VASP OUTCAR files
 in the main project directory. The main project directory stands for the parent
 directory containing several subdirectories, i.e. the structure folders of your
@@ -18,7 +27,7 @@ The main project directory ______
                              |___ structure_03 (folder) --- OUTCAR (file)
                              |___ ...           ...     --- ...
                              |___ structure_n  (folder) --- OUTCAR (file)
-                             |___ grab_VASP_energies.py (script)
+                             |___ grab_VASP_energies.py (this script)
 
 ##############################  target strings  ##############################
 
@@ -35,23 +44,16 @@ structure names and the corresponding energies into an "energies.csv" file.
 #########################  How to Use this script  ############################
 
 to see help:
-python grab_VASP_energies.py h [OR -h OR help OR -help]
+python grab_VASP_energies.py -h [OR --help]
 
 to run:
 python grab_VASP_energies.py
 
 #########################  Let's try it and enjoy! ############################
-"""
-
-from pathlib import Path, PurePath
-import csv, re, sys, time
-
+""")
+args = parser.parse_args()
 
 drawline = "".join(("\n", "-" * 79, "\n"))
-
-help_str = "\n".join((drawline, "HOW TO USE THIS SCRiPT:",
-                      "Go to your main project directory, then type\n",
-                      "python grab_VASP_energies.py", drawline))
 
 str_TOTEN = r"\s+free\s\senergy\s+TOTEN.*\s+([-+]?\d*\.\d+)"
 
@@ -101,23 +103,19 @@ def main():
     (1) parses each OUTCAR file.
     (2) save data into an energies.csv file.
     """
-    if len(sys.argv) == 2 and sys.argv[1] in ("-h", "-help", "h", "help"):
-        print(help_str)
-        sys.exit(0)
-    else:
-        initial_time = time.time()
-        print(drawline)
+    initial_time = time.time()
+    print(drawline)
 
-        data = parse_OUTCAR()
+    data = parse_OUTCAR()
 
-        cols = ["specie", "TOTEN / eV", "E without entropy", "E(sigma->0)"]
-        with open("energies.csv", "w", newline="") as fw:
-            csv_out = csv.writer(fw)
-            csv_out.writerow(cols)
-            csv_out.writerows(data)
-        total_time = time.time() - initial_time
-        print(drawline)
-        print("Work Completed. Used Time: {:.3f} Seconds\n".format(total_time))
+    cols = ["specie", "TOTEN / eV", "E without entropy", "E(sigma->0)"]
+    with open("energies.csv", "w", newline="") as fw:
+        csv_out = csv.writer(fw)
+        csv_out.writerow(cols)
+        csv_out.writerows(data)
+    total_time = time.time() - initial_time
+    print(drawline)
+    print("Work Completed. Used Time: {:.3f} Seconds\n".format(total_time))
 
 
 if __name__ == "__main__":
