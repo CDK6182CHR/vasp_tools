@@ -1,6 +1,6 @@
 # VASP Tools
 ---
-This rep
+This repository contains some tools for parsing or plotting VASP results.
 
 ## grab_VASP_energies.py
 
