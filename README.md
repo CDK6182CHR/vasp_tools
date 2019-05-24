@@ -8,7 +8,9 @@ This rep
 in the main project directory. The main project directory stands for the parent
 directory containing several subdirectories, i.e. the structure folders of your
 calculations.
+
 To be exact, the following diagram would help to understand clearly.
+```bash
 The main project directory ______
                              |___ structure_01 (folder) --- OUTCAR (file)
                              |___ structure_02 (folder) --- OUTCAR (file)
@@ -29,7 +31,7 @@ python grab_VASP_energies.py -h [OR --help]
 to run:
 python grab_VASP_energies.py
 #########################  Let's try it and enjoy! ############################
-
+```
 
 ## band_v2.py
 
