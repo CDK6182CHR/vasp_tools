@@ -199,7 +199,9 @@ def parse_outcar(data, ispin, lorbit, ediff, nelmax, atom_num, ediffg):
                 print(fmt.format(step, energy, dE, maxscf, 
                                  averageF, maximumF, vol, usedtime))
 
-
+            sys.stdout.write(ENDC)
+			
+			
 def main(inputf):
     data = grab_outcar(inputf)
     parse_outcar(*grab_parameters(data))
