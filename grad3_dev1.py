@@ -51,7 +51,7 @@ def convert_time(time):
     """ dealing with time.
     """
     # seconds
-    if time >= 60.0:
+    if time <= 60.0:
         time = time
     # minutes
     elif 60.0 < time < 3600.0:
