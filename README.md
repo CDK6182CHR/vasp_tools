@@ -39,7 +39,13 @@ relaxation job in VASP based on the OUTCAR file. The script will first check the
 existence of the OUTCAR file, then parse the keywords in it, e.g. EDIFF, NELM, 
 NIONS, EDIFFG, etc. Finally, the script would check the convergency based on the
 Total Energy and Force criteria. The report will be printed on the screen directly.
-	
+
+```bash
+usage:
+
+Python grad3_dev1 -o OUTCAR
+
+```	
 ## band_v2.py
 
 ## dos.py `to do`
