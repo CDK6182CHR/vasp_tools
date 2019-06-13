@@ -4,9 +4,7 @@ This repository contains some tools for parsing or plotting VASP results.
 
 ## grab_VASP_energies.py
 
-    This is a Python3 script for grabbing the energies in the VASP OUTCAR files
-in the main project directory. The main project directory stands for the parent
-directory containing several subdirectories, i.e. the structure folders of your
+    This is a Python3 script for grabbing the energies in the VASP OUTCAR files in the main project directory. The main project directory stands for the parent directory containing several subdirectories, i.e. the structure folders of your
 calculations.
 
 To be exact, the following diagram would help to understand clearly.
@@ -34,11 +32,7 @@ python grab_VASP_energies.py
 ```
 ## grad3_dev1.py
 
-    This is a Python3 script for checking the convergency of a optimization or 
-relaxation job in VASP based on the OUTCAR file. The script will first check the
-existence of the OUTCAR file, then parse the keywords in it, e.g. EDIFF, NELM, 
-NIONS, EDIFFG, etc. Finally, the script would check the convergency based on the
-Total Energy and Force criteria. The report will be printed on the screen directly.
+    This is a Python3 script for checking the convergency of a optimization or relaxation job in VASP based on the OUTCAR file. The script will first check the existence of the OUTCAR file, then parse the keywords in it, e.g. EDIFF, NELM, NIONS, EDIFFG, etc. Finally, the script would check the convergency based on the Total Energy and Force criteria. The report will be printed on the screen directly.
 
 ```bash
 usage:
